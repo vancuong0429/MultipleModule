@@ -4,8 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.detail.domain.GetUserDetailCase
 import com.example.model.views.User
-import com.example.repository.AppDispatchers
-import com.example.repository.Resource
+import com.example.common.AppDispatchers
 import io.mockk.coEvery
 import io.mockk.confirmVerified
 import io.mockk.mockk
@@ -34,7 +33,8 @@ class DetailUnitTest {
 
     private lateinit var getUserDetailCase: GetUserDetailCase
     private lateinit var viewModel: DetailViewModel
-    private val appDispatchers = AppDispatchers(Dispatchers.Unconfined, Dispatchers.Unconfined)
+    private val appDispatchers =
+        AppDispatchers(Dispatchers.Unconfined, Dispatchers.Unconfined)
 
     @Before
     fun setup() {

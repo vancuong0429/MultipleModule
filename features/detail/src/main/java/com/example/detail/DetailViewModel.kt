@@ -2,20 +2,20 @@ package com.example.detail
 
 import androidx.lifecycle.MutableLiveData
 import com.example.common.BaseViewModel
-import com.example.detail.domain.GetUserDetailCase
-import com.example.model.views.User
-import com.example.repository.AppDispatchers
-import com.example.repository.Resource
+import com.example.common.AppDispatchers
+import com.example.domain.entities.Resource
+import com.example.domain.entities.UserEntity
+import com.example.domain.usecases.GetUserDetailUseCase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DetailViewModel(private val getUserDetailCase: GetUserDetailCase, private val appDispatchers: AppDispatchers) : BaseViewModel() {
-    val userDetail : MutableLiveData<User> = MutableLiveData()
+class DetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase, private val appDispatchers: AppDispatchers) : BaseViewModel() {
+    val userDetail : MutableLiveData<UserEntity> = MutableLiveData()
 
     fun loadUserDetail(login: String) {
         GlobalScope.launch(appDispatchers.io) {
-            var data = getUserDetailCase.run(login)
+            var data = getUserDetailUseCase.run(login)
             withContext(appDispatchers.main) {
                 when(data.status) {
                     Resource.Status.ERROR -> {

@@ -6,9 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.local.dao.UserDao
-import com.example.model.views.User
+import com.example.local.entities.UserDBO
 
-@Database(entities = [User::class], version = 1, exportSchema = false)
+@Database(entities = [UserDBO::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class MulAppDatabase  : RoomDatabase() {
     abstract fun userDao(): UserDao

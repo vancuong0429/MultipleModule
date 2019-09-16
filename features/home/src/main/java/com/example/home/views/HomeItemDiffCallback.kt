@@ -1,10 +1,10 @@
 package com.example.home.views
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.model.views.User
+import com.example.domain.entities.UserEntity
 
-class HomeItemDiffCallback(private val oldList: List<User>,
-                           private val newList: List<User>) : DiffUtil.Callback() {
+class HomeItemDiffCallback(private val oldList: List<UserEntity>,
+                           private val newList: List<UserEntity>) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size
 

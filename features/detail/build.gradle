@@ -48,7 +48,7 @@ dependencies {
     implementation project(':navigation')
     implementation project(':data:repository')
     implementation project(':data:remote')
-    implementation project(':data:model')
+    implementation project(':domain')
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
 

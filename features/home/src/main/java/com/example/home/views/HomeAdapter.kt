@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.entities.UserEntity
 import com.example.home.HomeViewModel
 import com.example.home.R
 import com.example.home.databinding.ItemHomeBinding
-import com.example.model.views.User
 
 class HomeAdapter(private val viewModel: HomeViewModel): RecyclerView.Adapter<HomeViewHolder>(){
-    private val users: MutableList<User> = mutableListOf()
+    private val users: MutableList<UserEntity> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder
             = HomeViewHolder(
         LayoutInflater.from(parent.context).inflate(
@@ -25,7 +25,7 @@ class HomeAdapter(private val viewModel: HomeViewModel): RecyclerView.Adapter<Ho
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) = holder.bindTo(users[position], viewModel)
 
-    fun updateData(items: List<User>) {
+    fun updateData(items: List<UserEntity>) {
         val diffCallback = HomeItemDiffCallback(users, items)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
 
@@ -40,7 +40,7 @@ class HomeViewHolder(parent: View): RecyclerView.ViewHolder(parent) {
 
     private val binding = ItemHomeBinding.bind(parent)
 
-    fun bindTo(user: User, viewModel: HomeViewModel) {
+    fun bindTo(user: UserEntity, viewModel: HomeViewModel) {
         binding.user = user
         binding.viewmodel = viewModel
     }

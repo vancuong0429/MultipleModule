@@ -3,21 +3,21 @@ package com.example.home
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import com.example.common.BaseViewModel
-import com.example.home.domain.GetTopUsers
-import com.example.model.views.User
-import com.example.repository.AppDispatchers
-import com.example.repository.Resource
+import com.example.common.AppDispatchers
+import com.example.domain.entities.Resource
+import com.example.domain.entities.UserEntity
+import com.example.domain.usecases.GetTopUsersUseCase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel(private val getTopUsers: GetTopUsers, private val appDispatchers: AppDispatchers) : BaseViewModel() {
+class HomeViewModel(private val getTopUsersUseCase: GetTopUsersUseCase, private val appDispatchers: AppDispatchers) : BaseViewModel() {
 
-    val usersLiveData: MutableLiveData<List<User>> = MutableLiveData()
+    val usersLiveData: MutableLiveData<List<UserEntity>> = MutableLiveData()
 
     var isLoading: ObservableBoolean = ObservableBoolean()
 
-    fun userClicksOnItem(user: User) {
+    fun userClicksOnItem(user: UserEntity) {
         navigate(
             HomeFragmentDirections.actionHomeFragmentToDetailFragment(
                 user.login
@@ -32,7 +32,7 @@ class HomeViewModel(private val getTopUsers: GetTopUsers, private val appDispatc
 
     fun loadUsers() {
        GlobalScope.launch(appDispatchers.io) {
-           var data = getTopUsers.run()
+           var data = getTopUsersUseCase.run()
            withContext(appDispatchers.main) {
                isLoading.set(false)
                when(data.status) {
@@ -48,14 +48,14 @@ class HomeViewModel(private val getTopUsers: GetTopUsers, private val appDispatc
    }
 
     fun loadUsersCallback() {
-        getTopUsers.runCallback(object : CallBackI {
-            override fun onSuccess(data: Any) {
-                usersLiveData.value = data as List<User>
-            }
-            override fun onError() {
-                usersLiveData.value = null
-            }
-
-        })
+//        getTopUsersUseCase.runCallback(object : CallBackI {
+//            override fun onSuccess(data: Any) {
+//                usersLiveData.value = data as List<UserResponse>
+//            }
+//            override fun onError() {
+//                usersLiveData.value = null
+//            }
+//
+//        })
     }
 }

@@ -5,12 +5,12 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.model.views.User
+import com.example.domain.entities.UserEntity
 
 object HomeBinding {
     @BindingAdapter("app:items")
     @JvmStatic
-    fun setItems(recyclerView: RecyclerView, users: List<User>?) {
+    fun setItems(recyclerView: RecyclerView, users: List<UserEntity>?) {
         with(recyclerView.adapter as HomeAdapter) {
             users?.let { updateData(it) }
         }

@@ -7,8 +7,7 @@ import com.example.home.domain.GetTopUsers
 import com.example.home.views.HomeFragmentDirections
 import com.example.model.views.User
 import com.example.navigation.NavigationCommand
-import com.example.repository.AppDispatchers
-import com.example.repository.Resource
+import com.example.common.AppDispatchers
 import io.mockk.*
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert
@@ -37,7 +36,8 @@ class HomeUnitTest {
     lateinit var homeViewModel: HomeViewModel
     private lateinit var getTopUsers: GetTopUsers
 
-    private val appDispatchers = AppDispatchers(Dispatchers.Unconfined, Dispatchers.Unconfined)
+    private val appDispatchers =
+        AppDispatchers(Dispatchers.Unconfined, Dispatchers.Unconfined)
 
     @Before
     fun setUp() {

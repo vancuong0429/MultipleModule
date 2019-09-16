@@ -54,8 +54,8 @@ dependencies {
     implementation project(':navigation')
     implementation project(':data:remote')
     implementation project(':data:repository')
-    implementation project(':data:model')
     implementation project(':data:local')
+    implementation project(':domain')
 
     implementation 'org.koin:koin-android:2.0.1'
     implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
