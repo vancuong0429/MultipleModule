@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-kapt'
 def globalConf = rootProject.ext
-apply from: "../../app/android_commons.gradle"
+apply from: "../../gradle_dependencies/android_commons.gradle"
 android {
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

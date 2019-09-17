@@ -31,6 +31,7 @@ ext {
             navigation : ":navigation",
 
             common : ":common",
+            common_jvm : ":common_jvm",
 
             local : ":data:local",
             remote : ":data:remote",

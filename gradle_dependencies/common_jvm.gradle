@@ -1,0 +1,41 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+repositories {
+    mavenCentral()
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+
+def globalConf = rootProject.ext
+
+dependencies {
+    // Kotlin
+    implementation globalConf.kotlinLibraries.kotlin
+    implementation globalConf.kotlinLibraries.kotlinCoroutineCore
+
+    // Koin
+    implementation globalConf.libraries.koin
+
+    // Test
+    testImplementation globalConf.testLibraries.junit
+    testImplementation globalConf.testLibraries.mockWebServer
+    testImplementation globalConf.testLibraries.koinTest
+    testImplementation globalConf.testLibraries.kotlinCoroutineTest
+
+    // Internal modules
+    implementation project(globalConf.modules.common_jvm)
+}

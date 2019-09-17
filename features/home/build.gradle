@@ -1,6 +1,6 @@
 apply plugin: 'kotlin-kapt'
 apply from: "../../jacoco.gradle"
-apply from: '../../app/android_feature_dependencies.gradle'
+apply from: '../../gradle_dependencies/android_feature_dependencies.gradle'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 def globalConf = rootProject.ext

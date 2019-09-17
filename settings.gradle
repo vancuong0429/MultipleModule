@@ -1,1 +1,1 @@
-include ':app', ':features:home', ':common', ':navigation', ':data:repository', ':features:detail', ':data:remote', ':domain', 'data:local'
+include ':app', ':features:home', ':common', ':navigation', ':data:repository', ':features:detail', ':data:remote', ':domain', ':common_jvm', 'data:local'

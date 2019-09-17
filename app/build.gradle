@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply from:'/android_commons.gradle'
+apply from:'../gradle_dependencies/android_commons.gradle'
 def globalConf = rootProject.ext
 
 android {

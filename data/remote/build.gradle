@@ -1,24 +1,10 @@
-apply plugin: 'kotlin'
+apply from:'../../gradle_dependencies/common_jvm.gradle'
+
 def globalConf = rootProject.ext
 
 dependencies {
-
-    // Test
-    testImplementation globalConf.testLibraries.junit
-    testImplementation globalConf.testLibraries.mockWebServer
-    testImplementation globalConf.testLibraries.koinTest
-
-    // Koin
-    implementation globalConf.libraries.koin
-
-
-    // Kotlin
-    implementation globalConf.kotlinLibraries.kotlin
-    implementation globalConf.kotlinLibraries.kotlinCoroutineCore
-
     // Network
     implementation globalConf.libraries.retrofit
     implementation globalConf.libraries.retrofitGsonConverte
     implementation globalConf.libraries.httpLogginInterceptor
-
 }

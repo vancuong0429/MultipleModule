@@ -1,14 +1,16 @@
-
+apply plugin: 'com.android.library'
+apply from: '../../gradle_dependencies/android_commons.gradle'
 def globalConf = rootProject.ext
 
 dependencies {
+    //Internal modules
+    implementation project(globalConf.modules.domain)
+    implementation project(globalConf.modules.common_jvm)
+    implementation project(globalConf.modules.common)
+    implementation project(globalConf.modules.repository)
+    implementation project(globalConf.modules.navigation)
 
-    // Kotlin
-    implementation globalConf.kotlinLibraries.kotlin
-    implementation globalConf.kotlinLibraries.kotlinCoroutineCore
-    implementation globalConf.androidLibraries.kotlinCoroutineAndroid
-
-    // Android
+    // Android UI
     implementation globalConf.androidLibraries.appCompat
     implementation globalConf.androidLibraries.coreKtx
     implementation globalConf.androidLibraries.constrainLayout
