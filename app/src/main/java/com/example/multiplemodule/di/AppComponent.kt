@@ -8,5 +8,5 @@ import com.example.local.di.localModule
 import com.example.remote.di.createRemoteModule
 import com.example.repository.di.createRepositoryModule
 
-val appComponent= listOf(createRemoteModule("https://githubfake.free.beeceptor.com/"), createCommonModule, createDomainModule, createRepositoryModule,
+val appComponent= listOf(createRemoteModule("https://api.github.com/"), createCommonModule, createDomainModule, createRepositoryModule,
     createHomeModule, createDetailModule, localModule)
