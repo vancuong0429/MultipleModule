@@ -24,6 +24,8 @@ dependencies {
     implementation project(globalConf.modules.remote)
     implementation project(globalConf.modules.local)
     implementation project(globalConf.modules.domain)
+    implementation project(globalConf.modules.common_jvm)
+    implementation project(globalConf.modules.common)
 
     // Koin
     implementation globalConf.libraries.koin

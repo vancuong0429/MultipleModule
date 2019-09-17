@@ -1,5 +1,8 @@
 package com.example.common.functional
 
+import com.example.common.exception.ExceptionInterceptor
+import com.example.common.exception.Failure
+
 /**
  * Represents a value of one of two possible types (a disjoint union).
  * Instances of [Either] are either an instance of [Left] or [Right].
@@ -9,23 +12,49 @@ package com.example.common.functional
  * @see Left
  * @see Right
  */
-sealed class Either<out L, out R> {
+sealed class Either<out Fail, out SuccessResult> {
     /** * Represents the left side of [Either] class which by convention is a "Failure". */
-    data class Failure<out L>(val a: L) : Either<L, Nothing>()
+    data class Fail<out L>(val a: L) : Either<L, Nothing>()
     /** * Represents the right side of [Either] class which by convention is a "Success". */
     data class Success<out R>(val b: R) : Either<Nothing, R>()
 
-    val isSuccess get() = this is Success<R>
-    val isFailure get() = this is Failure<L>
+    val isSuccess get() = this is Success<SuccessResult>
+    val isFailure get() = this is Either.Fail<Fail>
 
-    fun <L> fail(a: L) = Either.Failure(a)
-    fun <R> success(b: R) = Either.Success(b)
+    fun <Fail> fail(a: Fail) = Either.Fail(a)
+    fun <SuccessResult> success(b: SuccessResult) = Either.Success(b)
 
-    fun either(failAction: (L) -> Any, successAction: (R) -> Any): Any =
+    fun either(failAction: (Fail) -> Unit, successAction: (SuccessResult) -> Unit) {
         when (this) {
-            is Failure -> failAction(a)
+            is Either.Fail -> failAction(a)
             is Success -> successAction(b)
         }
+    }
+
+    companion object {
+        suspend fun <SuccessResult> runSuspendWithCatchError(errorInterceptors: List<ExceptionInterceptor> = listOf(), action: suspend () -> (Either<Failure, SuccessResult>)) : Either<Failure, SuccessResult> {
+            try {
+                return action()
+            } catch (e: Exception) {
+                for (errorInterceptor: ExceptionInterceptor in errorInterceptors) {
+                    val failure: Failure? = errorInterceptor.handleException(e)
+                    if (failure != null) {
+                        return Fail(failure)
+                    }
+                }
+
+                return Fail(Failure.UnCatchError(e))
+            }
+        }
+
+        fun <SuccessResult> runWithCatchError(errorInterceptors: List<ExceptionInterceptor> = listOf(),action: () -> (Either<Failure, SuccessResult>)) : Either<Failure, SuccessResult> {
+            return try {
+                action()
+            } catch (e: Exception) {
+                Fail(Failure.UnCatchError(e))
+            }
+        }
+    }
 }
 
 // Credits to Alex Hart -> https://proandroiddev.com/kotlins-nothing-type-946de7d464fb
@@ -36,7 +65,7 @@ fun <A, B, C> ((A) -> B).compose(f: (B) -> C): (A) -> C = {
 
 fun <T, L, R> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T> =
     when (this) {
-        is Either.Failure -> Either.Failure(a)
+        is Either.Fail -> Either.Fail(a)
         is Either.Success -> fn(b)
     }
 

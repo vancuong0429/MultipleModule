@@ -44,7 +44,7 @@ class HomeUnitTest {
         getTopUsers = mockk()
     }
 
-    @Test
+    /*@Test
     fun `loadUsers_success`() {
         //GIVEN
         val result = Resource.success(FAKE_USERS)
@@ -97,7 +97,7 @@ class HomeUnitTest {
         }
 
         confirmVerified(observer)
-    }
+    }*/
 
     @Test
     fun `loadUsersCallback_error`() {

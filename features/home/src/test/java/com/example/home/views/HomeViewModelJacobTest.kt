@@ -1,6 +1,5 @@
 package com.example.home.views
 
-import com.example.home.HomeViewModelJacob
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.example.domain.entities.Resource
