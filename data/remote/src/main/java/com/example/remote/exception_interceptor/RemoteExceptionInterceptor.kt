@@ -17,7 +17,7 @@ class RemoteExceptionInterceptor : ExceptionInterceptor {
                 } else {
                     ""
                 }
-                Failure.NetworkConnection(exception.code(), errorMsg)
+                Failure.ApiError(exception.code(), errorMsg)
             }
             else -> null
         }

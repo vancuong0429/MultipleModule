@@ -3,7 +3,7 @@ package com.example.common.exception
 sealed class Failure {
     object InternetError : Failure()
     object ConnectionTimeout : Failure()
-    class NetworkConnection(val httpCode: Int, val errorMsg: String) : Failure()
+    class ApiError(val httpCode: Int, val errorMsg: String) : Failure()
     class ServerError(val errorCode: Int, val errorMsg: String) : Failure()
     class UnCatchError(val exception: Exception) : Failure()
 
