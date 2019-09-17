@@ -13,6 +13,7 @@ class DetailRepositoryImpl(private val userDataSource: UserDataSource) : UserDet
             userEntityMapper.mapResponseToEntity(this)
         }
         return try {
+
             if (response == null) {
                 Resource(Resource.Status.ERROR, null, null)
             } else {

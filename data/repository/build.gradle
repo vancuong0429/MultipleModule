@@ -1,17 +1,8 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+def globalConf = rootProject.ext
+apply from: "../../app/android_commons.gradle"
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
-
-
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -26,18 +17,21 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Test
+    testImplementation globalConf.testLibraries.junit
 
-    implementation project(':data:remote')
-    implementation project(':data:local')
-    implementation project(':domain')
+    // Modules
+    implementation project(globalConf.modules.remote)
+    implementation project(globalConf.modules.local)
+    implementation project(globalConf.modules.domain)
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1"
+    // Koin
+    implementation globalConf.libraries.koin
+
+    // Kotlin
+    implementation globalConf.kotlinLibraries.kotlin
+    implementation globalConf.kotlinLibraries.kotlinCoroutineCore
+
+    //
+    implementation globalConf.androidLibraries.kotlinCoroutineAndroid
 }

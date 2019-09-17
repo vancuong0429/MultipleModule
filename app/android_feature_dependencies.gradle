@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply from: '../../app/android_core_dependencies.gradle'
+apply from: '../../app/android_commons.gradle'
+def globalConf = rootProject.ext
+
+dependencies {
+    implementation project(globalConf.modules.repository)
+    implementation project(globalConf.modules.navigation)
+    implementation project(globalConf.modules.common)
+
+    implementation project(globalConf.modules.domain)
+
+    // Koin
+    implementation globalConf.libraries.koin
+    implementation globalConf.libraries.koinViewModel
+
+    // Test
+    androidTestImplementation globalConf.testLibraries.androidTestRunner
+    androidTestImplementation globalConf.testLibraries.espresso
+
+    testImplementation globalConf.testLibraries.junit
+    testImplementation globalConf.testLibraries.archCoreTest
+    testImplementation globalConf.testLibraries.mockk
+    testImplementation globalConf.testLibraries.kotlinCoroutineTest
+
+
+}

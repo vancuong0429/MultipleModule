@@ -1,0 +1,31 @@
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+def globalConf = rootProject.ext
+
+android {
+    compileSdkVersion globalConf.targetSdk
+    buildToolsVersion globalConf.buildTools
+
+    defaultConfig {
+        minSdkVersion globalConf.minSdk
+        targetSdkVersion globalConf.targetSdk
+        versionCode globalConf.versionCode
+        versionName globalConf.versionName
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+dependencies {
+    implementation globalConf.kotlinLibraries.kotlin
+}

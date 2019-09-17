@@ -1,60 +1,24 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
-
-
-    defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
+apply plugin: 'kotlin'
+def globalConf = rootProject.ext
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.1.0")
-    testImplementation 'org.koin:koin-test:2.0.1'
+    // Test
+    testImplementation globalConf.testLibraries.junit
+    testImplementation globalConf.testLibraries.mockWebServer
+    testImplementation globalConf.testLibraries.koinTest
 
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.6.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
-    implementation 'org.koin:koin-android:2.0.1'
-    implementation("com.squareup.okhttp3:logging-interceptor:4.1.0")
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    // Koin
+    implementation globalConf.libraries.koin
 
-    def moshiVersion="1.8.0"
-    def retrofit2_version = "2.5.0"
 
-    //Moshi
-    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    // Kotlin
+    implementation globalConf.kotlinLibraries.kotlin
+    implementation globalConf.kotlinLibraries.kotlinCoroutineCore
 
-    //Retrofit2
-    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit2_version"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+    // Network
+    implementation globalConf.libraries.retrofit
+    implementation globalConf.libraries.retrofitGsonConverte
+    implementation globalConf.libraries.httpLogginInterceptor
 
 }

@@ -1,0 +1,20 @@
+
+def globalConf = rootProject.ext
+
+dependencies {
+
+    // Kotlin
+    implementation globalConf.kotlinLibraries.kotlin
+    implementation globalConf.kotlinLibraries.kotlinCoroutineCore
+    implementation globalConf.androidLibraries.kotlinCoroutineAndroid
+
+    // Android
+    implementation globalConf.androidLibraries.appCompat
+    implementation globalConf.androidLibraries.coreKtx
+    implementation globalConf.androidLibraries.constrainLayout
+    implementation globalConf.androidLibraries.recyclerView
+    implementation globalConf.androidLibraries.navigation
+    implementation globalConf.androidLibraries.navigationFrag
+    implementation globalConf.androidLibraries.lifecycleViewModel
+    implementation globalConf.androidLibraries.lifecycleExtensions
+}
