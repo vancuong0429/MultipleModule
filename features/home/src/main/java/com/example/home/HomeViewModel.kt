@@ -9,7 +9,6 @@ import com.example.domain.entities.UserEntity
 import com.example.domain.usecases.GetTopUsersUseCase
 import com.example.domain.usecases.base.UseCaseParams
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class HomeViewModel(
     private val getTopUsersUseCase: GetTopUsersUseCase,
