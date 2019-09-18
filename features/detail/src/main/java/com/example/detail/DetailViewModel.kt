@@ -16,7 +16,6 @@ class DetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase, pr
         viewModelScope.launch(appDispatchers.main) {
             val data = withContext(appDispatchers.io) {
                 getUserDetailUseCase.run(login)
-
             }
             data.either({
                 userDetail.value = null

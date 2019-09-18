@@ -5,7 +5,8 @@ import androidx.lifecycle.Observer
 import com.example.common.Event
 import com.example.navigation.NavigationCommand
 import com.example.common.AppDispatchers
-import com.example.domain.entities.Resource
+import com.example.common.exception.Failure
+import com.example.common.functional.Either
 import com.example.domain.entities.UserEntity
 import com.example.domain.usecases.GetTopUsersUseCase
 import io.mockk.*
@@ -16,7 +17,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import java.lang.Exception
 import java.util.*
 
 @RunWith(JUnit4::class)
@@ -44,11 +44,11 @@ class HomeUnitTest {
         getTopUsers = mockk()
     }
 
-    /*@Test
+    @Test
     fun `loadUsers_success`() {
         //GIVEN
-        val result = Resource.success(FAKE_USERS)
-        val observer = mockk<Observer<List<UserEntity>>>(relaxed = true)
+        val result = Either.Success(FAKE_USERS)
+        val observer: Observer<List<UserEntity>> = mockk(relaxed = true)
         coEvery {
             getTopUsers.run()
         } returns result
@@ -60,22 +60,16 @@ class HomeUnitTest {
         homeViewModel.loadUsers()
 
         //THEN
-        coVerify {
-            getTopUsers.run()
-        }
-
         verify {
-            observer.onChanged(result.data)
+            observer.onChanged(result.b)
         }
-
-
         confirmVerified(observer)
     }
 
     @Test
     fun `loadUsers_error`() {
         //GIVEN
-        val result = Resource.error(Exception(), FAKE_USERS)
+        val result = Either.Fail(Failure.ConnectionTimeout)
         val observer = mockk<Observer<List<UserEntity>>>(relaxed = true)
         coEvery {
             getTopUsers.run()
@@ -88,16 +82,12 @@ class HomeUnitTest {
         homeViewModel.loadUsers()
 
         //THEN
-        coVerify {
-            getTopUsers.run()
-        }
-
         verify {
             observer.onChanged(null)
         }
 
         confirmVerified(observer)
-    }*/
+    }
 
     @Test
     fun `loadUsersCallback_error`() {
