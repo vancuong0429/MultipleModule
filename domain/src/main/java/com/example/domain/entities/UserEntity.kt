@@ -17,6 +17,4 @@ data class UserEntity(
     val blog: String?,
 
     var lastRefreshed: Date?
-) {
-
-}
+)

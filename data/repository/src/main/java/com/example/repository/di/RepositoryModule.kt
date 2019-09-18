@@ -7,7 +7,7 @@ import com.example.repository.HomeRepositoryImpl
 import org.koin.dsl.module
 
 val createRepositoryModule = module{
-    factory <UserDetailRepository>{ DetailRepositoryImpl(userDataSource = get()) }
+    factory <UserDetailRepository>{ DetailRepositoryImpl(userDataSource = get(), remoteExceptionInterceptor = get()) }
 
     factory <HomeRepository>{ HomeRepositoryImpl(userDataSource = get(), userDao = get(), remoteExceptionInterceptor = get()) }
 }

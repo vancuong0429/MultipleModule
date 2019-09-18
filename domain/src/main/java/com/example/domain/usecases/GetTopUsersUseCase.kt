@@ -2,7 +2,6 @@ package com.example.domain.usecases
 
 import com.example.common.exception.Failure
 import com.example.common.functional.Either
-import com.example.domain.entities.Resource
 import com.example.domain.entities.UserEntity
 import com.example.domain.repositories.HomeRepository
 
