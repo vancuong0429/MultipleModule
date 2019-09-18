@@ -6,6 +6,7 @@ import com.example.common.BaseViewModel
 import com.example.common.AppDispatchers
 import com.example.domain.entities.UserEntity
 import com.example.domain.usecases.GetUserDetailUseCase
+import com.example.domain.usecases.GetUserDetailUseCaseParams
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -14,9 +15,7 @@ class DetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase, pr
 
     fun loadUserDetail(login: String) {
         viewModelScope.launch(appDispatchers.main) {
-            val data = withContext(appDispatchers.io) {
-                getUserDetailUseCase.run(login)
-            }
+            val data = getUserDetailUseCase.execute(GetUserDetailUseCaseParams(login))
             data.either({
                 userDetail.value = null
             },{  userEntity ->

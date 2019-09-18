@@ -7,6 +7,7 @@ import com.example.common.AppDispatchers
 import com.example.common.BaseViewModel
 import com.example.domain.entities.UserEntity
 import com.example.domain.usecases.GetTopUsersUseCase
+import com.example.domain.usecases.base.UseCaseParams
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -33,9 +34,7 @@ class HomeViewModel(
     }
 
     fun loadUsers() = viewModelScope.launch(appDispatchers.main) {
-        val getUserResult = withContext(appDispatchers.io) {
-            getTopUsersUseCase.run()
-        }
+        val getUserResult = getTopUsersUseCase.execute(UseCaseParams.Empty)
 
         isLoading.set(false)
         getUserResult.either({ failure ->
