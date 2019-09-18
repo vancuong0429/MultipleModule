@@ -1,4 +1,4 @@
-package com.example.common.exception
+package com.example.common_jvm.exception
 
 sealed class Failure {
     object InternetError : Failure()

@@ -1,7 +1,7 @@
-package com.example.common.functional
+package com.example.common_jvm.functional
 
-import com.example.common.exception.ExceptionInterceptor
-import com.example.common.exception.Failure
+import com.example.common_jvm.exception.ExceptionInterceptor
+import com.example.common_jvm.exception.Failure
 
 /**
  * Represents a value of one of two possible types (a disjoint union).

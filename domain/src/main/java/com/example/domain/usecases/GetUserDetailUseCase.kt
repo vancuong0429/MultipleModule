@@ -1,7 +1,7 @@
 package com.example.domain.usecases
 
-import com.example.common.exception.Failure
-import com.example.common.functional.Either
+import com.example.common_jvm.exception.Failure
+import com.example.common_jvm.functional.Either
 import com.example.domain.entities.UserEntity
 import com.example.domain.repositories.UserDetailRepository
 

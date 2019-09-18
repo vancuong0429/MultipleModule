@@ -6,7 +6,7 @@ import com.example.common.Event
 import com.example.navigation.NavigationCommand
 import com.example.common.AppDispatchers
 import com.example.common.exception.Failure
-import com.example.common.functional.Either
+import com.example.common_jvm.functional.Either
 import com.example.domain.entities.UserEntity
 import com.example.domain.usecases.GetTopUsersUseCase
 import io.mockk.*

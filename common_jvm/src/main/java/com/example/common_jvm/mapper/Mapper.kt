@@ -1,4 +1,4 @@
-package com.example.common.mapper
+package com.example.common_jvm.mapper
 
 abstract class Mapper<Input, Output> {
     abstract fun map(input: Input) : Output

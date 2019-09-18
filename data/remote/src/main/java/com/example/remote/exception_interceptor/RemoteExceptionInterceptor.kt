@@ -1,7 +1,7 @@
 package com.example.remote.exception_interceptor
 
-import com.example.common.exception.ExceptionInterceptor
-import com.example.common.exception.Failure
+import com.example.common_jvm.exception.ExceptionInterceptor
+import com.example.common_jvm.exception.Failure
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
