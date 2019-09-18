@@ -21,7 +21,4 @@ data class UserDBO(
     val blog: String?,
 
     var lastRefreshed: Date
-) {
-    fun haveToRefreshFromNetwork() : Boolean
-            = TimeUnit.MILLISECONDS.toMinutes(Date().time - lastRefreshed.time) >= 10
-}
+)

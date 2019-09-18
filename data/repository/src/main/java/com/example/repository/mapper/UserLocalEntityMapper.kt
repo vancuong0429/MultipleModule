@@ -1,18 +1,18 @@
 package com.example.repository.mapper
 
+import com.example.common_jvm.extension.nullable.defaultEmpty
 import com.example.common_jvm.mapper.Mapper
+import com.example.domain.entities.UserEntity
 import com.example.local.entities.UserDBO
-import com.example.remote.entities.UserResponse
 
-class UserResponseLocalMapper : Mapper<UserResponse, UserDBO>(){
-    override fun map(input: UserResponse): UserDBO = UserDBO(
+class UserLocalEntityMapper : Mapper<UserDBO, UserEntity>(){
+    override fun map(input: UserDBO): UserEntity = UserEntity(
         id = input.id,
         login = input.login,
         avatarUrl = input.avatarUrl,
-        name = input.name,
-        company = input.company,
-        blog = input.blog,
+        name = input.name.defaultEmpty(),
+        company = input.company.defaultEmpty(),
+        blog = input.blog.defaultEmpty(),
         lastRefreshed = input.lastRefreshed
     )
-
 }

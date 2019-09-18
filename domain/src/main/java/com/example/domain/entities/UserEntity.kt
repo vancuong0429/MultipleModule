@@ -10,11 +10,11 @@ data class UserEntity(
 
     val avatarUrl: String,
 
-    val name: String?,
+    val name: String,
 
-    val company: String?,
+    val company: String,
 
-    val blog: String?,
+    val blog: String,
 
-    var lastRefreshed: Date?
+    val lastRefreshed: Date
 )

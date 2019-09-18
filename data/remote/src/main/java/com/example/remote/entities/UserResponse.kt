@@ -5,13 +5,13 @@ import java.util.*
 
 data class UserResponse(
     @SerializedName("id")
-    val id: String,
+    val id: String?,
 
     @SerializedName("login")
-    val login: String,
+    val login: String?,
 
     @SerializedName("avatar_url")
-    val avatarUrl: String,
+    val avatarUrl: String?,
 
     @SerializedName("name")
     val name: String?,
@@ -20,7 +20,5 @@ data class UserResponse(
     val company: String?,
 
     @SerializedName("blog")
-    val blog: String?,
-
-    var lastRefreshed: Date
+    val blog: String?
 )
