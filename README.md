@@ -9,6 +9,7 @@ Navigation Component<br/>
 ViewModel<br/>
 LiveData<br/>
 Retrofit<br/>
+Room<br>
 Coroutines<br/>
 Koin<br/>
 MockWebServer<br/>
