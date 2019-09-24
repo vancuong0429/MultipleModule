@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.example.multiplemodule">
+        package="com.template.multiplemodule">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -11,12 +11,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:name=".App">
+            android:name="com.template.multiplemodule.App">
         <activity
                 android:name=".view.Main2Activity"
                 android:label="@string/title_activity_main2"
                 android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.template.multiplemodule.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,10 +7,10 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.example.home.HomeViewModel" />
+                type="com.template.home.HomeViewModel" />
         <variable
                 name="user"
-                type="com.example.domain.entities.UserEntity" />
+                type="com.template.domain.entities.UserEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

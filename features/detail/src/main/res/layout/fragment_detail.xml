@@ -4,7 +4,7 @@
     <data>
         <variable
                 name="detailViewModel"
-                type="com.example.detail.DetailViewModel" />
+                type="com.template.detail.DetailViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

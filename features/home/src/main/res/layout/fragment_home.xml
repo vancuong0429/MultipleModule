@@ -6,7 +6,7 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.example.home.HomeViewModel" />
+                type="com.template.home.HomeViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
