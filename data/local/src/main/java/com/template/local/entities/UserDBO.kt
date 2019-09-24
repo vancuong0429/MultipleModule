@@ -3,7 +3,6 @@ package com.template.local.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 @Entity
 data class UserDBO(

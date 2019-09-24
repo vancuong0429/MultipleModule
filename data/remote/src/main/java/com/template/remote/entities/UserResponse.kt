@@ -1,7 +1,6 @@
 package com.template.remote.entities
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 data class UserResponse(
     @SerializedName("id")

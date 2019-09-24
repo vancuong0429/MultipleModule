@@ -2,14 +2,17 @@ package com.template.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.template.common.Event
-import com.template.navigation.NavigationCommand
 import com.template.common.AppDispatchers
+import com.template.common.Event
 import com.template.common.exception.Failure
 import com.template.common_jvm.functional.Either
 import com.template.domain.entities.UserEntity
 import com.template.domain.usecases.GetTopUsersUseCase
-import io.mockk.*
+import com.template.navigation.NavigationCommand
+import io.mockk.coEvery
+import io.mockk.confirmVerified
+import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import org.junit.Assert
 import org.junit.Before
