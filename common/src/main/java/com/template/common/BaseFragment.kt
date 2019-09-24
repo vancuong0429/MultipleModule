@@ -9,7 +9,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.template.navigation.NavigationCommand
 
-abstract class BaseFragment: Fragment() {
+abstract class BaseFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -28,7 +28,10 @@ abstract class BaseFragment: Fragment() {
         viewModel.navigation.observe(viewLifecycleOwner, Observer {
             it?.getContentIfNotHandled()?.let { command ->
                 when (command) {
-                    is NavigationCommand.To -> findNavController().navigate(command.directions, getExtras())
+                    is NavigationCommand.To -> findNavController().navigate(
+                        command.directions,
+                        getExtras()
+                    )
                     is NavigationCommand.Back -> findNavController().navigateUp()
                 }
             }

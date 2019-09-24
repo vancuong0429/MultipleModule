@@ -9,14 +9,17 @@ import com.template.domain.usecases.GetUserDetailUseCase
 import com.template.domain.usecases.GetUserDetailUseCaseParams
 import kotlinx.coroutines.launch
 
-class DetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase, private val appDispatchers: AppDispatchers) : BaseViewModel() {
-    val userDetail : MutableLiveData<UserEntity> = MutableLiveData()
+class DetailViewModel(
+    private val getUserDetailUseCase: GetUserDetailUseCase,
+    private val appDispatchers: AppDispatchers
+) : BaseViewModel() {
+    val userDetail: MutableLiveData<UserEntity> = MutableLiveData()
 
     fun loadUserDetail(login: String) = viewModelScope.launch(appDispatchers.main) {
         val data = getUserDetailUseCase.execute(GetUserDetailUseCaseParams(login))
         data.either({
             userDetail.value = null
-        },{  userEntity ->
+        }, { userEntity ->
             userDetail.value = userEntity
         })
     }

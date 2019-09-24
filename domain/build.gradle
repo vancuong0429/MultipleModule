@@ -1,4 +1,4 @@
-apply from:'../gradle_dependencies/common_jvm.gradle'
+apply from: '../gradle_dependencies/common_jvm.gradle'
 
 dependencies {
 

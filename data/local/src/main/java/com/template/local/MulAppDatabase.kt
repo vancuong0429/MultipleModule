@@ -10,11 +10,12 @@ import com.template.local.entities.UserDBO
 
 @Database(entities = [UserDBO::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
-abstract class MulAppDatabase  : RoomDatabase() {
+abstract class MulAppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
     companion object {
-        fun buildDatabase(context: Context) = Room.databaseBuilder(context.applicationContext, MulAppDatabase::class.java, "Mul.db")
-            .build()
+        fun buildDatabase(context: Context) =
+            Room.databaseBuilder(context.applicationContext, MulAppDatabase::class.java, "Mul.db")
+                .build()
     }
 }

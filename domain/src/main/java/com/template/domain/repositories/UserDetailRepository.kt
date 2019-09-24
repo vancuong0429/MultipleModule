@@ -5,6 +5,6 @@ import com.template.common_jvm.functional.Either
 import com.template.domain.entities.UserEntity
 
 
-interface UserDetailRepository  {
+interface UserDetailRepository {
     suspend fun getUserDetail(login: String): Either<Failure, UserEntity>
 }

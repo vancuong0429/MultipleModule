@@ -21,9 +21,33 @@ class DetailUnitTest {
 
     val DATE_REFRESH: Date = GregorianCalendar(2018, 5, 12).time
     val FAKE_USERS = listOf(
-        UserEntity(id="Id_1", login = "Login_1", avatarUrl = "AvatarUrl_1", blog = "Blog1", company = "Company1", lastRefreshed = DATE_REFRESH, name = "Name1"),
-        UserEntity(id="Id_2", login = "Login_2", avatarUrl = "AvatarUrl_2", blog = "Blog2", company = "Company2", lastRefreshed = DATE_REFRESH, name = "Name2"),
-        UserEntity(id="Id_3", login = "Login_3", avatarUrl = "AvatarUrl_3", blog = "Blog3", company = "Company3", lastRefreshed = DATE_REFRESH, name = "Name3")
+        UserEntity(
+            id = "Id_1",
+            login = "Login_1",
+            avatarUrl = "AvatarUrl_1",
+            blog = "Blog1",
+            company = "Company1",
+            lastRefreshed = DATE_REFRESH,
+            name = "Name1"
+        ),
+        UserEntity(
+            id = "Id_2",
+            login = "Login_2",
+            avatarUrl = "AvatarUrl_2",
+            blog = "Blog2",
+            company = "Company2",
+            lastRefreshed = DATE_REFRESH,
+            name = "Name2"
+        ),
+        UserEntity(
+            id = "Id_3",
+            login = "Login_3",
+            avatarUrl = "AvatarUrl_3",
+            blog = "Blog3",
+            company = "Company3",
+            lastRefreshed = DATE_REFRESH,
+            name = "Name3"
+        )
     )
 
     @Rule
@@ -47,7 +71,7 @@ class DetailUnitTest {
         val observerResult = mockk<Observer<UserEntity>>()
         val result = Either.Success(FAKE_USERS.first())
 
-        coEvery{
+        coEvery {
             getUserDetailCase.run("fake")
         } returns result
 
@@ -78,7 +102,7 @@ class DetailUnitTest {
         viewModel.userDetail.observeForever(observerResult)
 
 
-        coEvery{
+        coEvery {
             getUserDetailCase.run("fake")
         } returns error
 

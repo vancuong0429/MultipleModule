@@ -36,7 +36,7 @@ fun createRemoteModule(baseUrl: String) = module {
             .build()
     }
 
-    factory{ get<Retrofit>().create(UserService::class.java) }
+    factory { get<Retrofit>().create(UserService::class.java) }
 
     factory { UserDataSource(userService = get()) }
     single { RemoteExceptionInterceptor() }

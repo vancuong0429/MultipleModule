@@ -10,8 +10,8 @@ import com.template.common.BaseViewModel
 import com.template.detail.databinding.FragmentDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailFragment : BaseFragment(){
-    private  val detailViewModel: DetailViewModel by viewModel()
+class DetailFragment : BaseFragment() {
+    private val detailViewModel: DetailViewModel by viewModel()
     private lateinit var detailBinding: FragmentDetailBinding
     private val args: DetailFragmentArgs by navArgs()
     override fun getViewModel(): BaseViewModel = detailViewModel
@@ -21,7 +21,7 @@ class DetailFragment : BaseFragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        detailBinding = FragmentDetailBinding.inflate(inflater, container,false)
+        detailBinding = FragmentDetailBinding.inflate(inflater, container, false)
         detailBinding.detailViewModel = detailViewModel
         detailBinding.lifecycleOwner = viewLifecycleOwner
         return detailBinding.root

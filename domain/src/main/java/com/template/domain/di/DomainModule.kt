@@ -4,9 +4,9 @@ import com.template.domain.usecases.GetTopUsersUseCase
 import com.template.domain.usecases.GetUserDetailUseCase
 import org.koin.dsl.module
 
-val createDomainModule = module{
+val createDomainModule = module {
 
-    factory{ GetTopUsersUseCase(homeRepository = get()) }
+    factory { GetTopUsersUseCase(homeRepository = get()) }
 
-    factory{ GetUserDetailUseCase(detailRepository = get()) }
+    factory { GetUserDetailUseCase(detailRepository = get()) }
 }

@@ -17,9 +17,10 @@ object HomeBinding {
     }
 
     @BindingAdapter("app:imageUrl")
-    @JvmStatic fun loadImage(view: ImageView, url: String) {
+    @JvmStatic
+    fun loadImage(view: ImageView, url: String) {
         Glide.with(view.context).load(url).apply(RequestOptions.circleCropTransform()).into(view)
     }
 
 
- }
+}

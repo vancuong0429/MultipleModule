@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="viewmodel"
                 type="com.template.home.HomeViewModel" />
+
         <variable
                 name="user"
                 type="com.template.domain.entities.UserEntity" />
@@ -21,6 +22,7 @@
             android:focusable="true"
             android:onClick="@{() -> viewmodel.userClicksOnItem(user)}"
             tools:context=".HomeFragment">
+
         <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -35,6 +37,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp" />
+
         <TextView
                 android:text="@{user.login}"
                 android:layout_width="0dp"

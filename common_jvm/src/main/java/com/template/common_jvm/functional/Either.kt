@@ -15,6 +15,7 @@ import com.template.common_jvm.exception.Failure
 sealed class Either<out Fail, out SuccessResult> {
     /** * Represents the left side of [Either] class which by convention is a "Failure". */
     data class Fail<out L>(val a: L) : Either<L, Nothing>()
+
     /** * Represents the right side of [Either] class which by convention is a "Success". */
     data class Success<out R>(val b: R) : Either<Nothing, R>()
 
@@ -32,7 +33,10 @@ sealed class Either<out Fail, out SuccessResult> {
     }
 
     companion object {
-        suspend fun <SuccessResult> runSuspendWithCatchError(errorInterceptors: List<ExceptionInterceptor> = listOf(), action: suspend () -> (Either<Failure, SuccessResult>)) : Either<Failure, SuccessResult> {
+        suspend fun <SuccessResult> runSuspendWithCatchError(
+            errorInterceptors: List<ExceptionInterceptor> = listOf(),
+            action: suspend () -> (Either<Failure, SuccessResult>)
+        ): Either<Failure, SuccessResult> {
             try {
                 return action()
             } catch (e: Exception) {
@@ -47,7 +51,10 @@ sealed class Either<out Fail, out SuccessResult> {
             }
         }
 
-        fun <SuccessResult> runWithCatchError(errorInterceptors: List<ExceptionInterceptor> = listOf(),action: () -> (Either<Failure, SuccessResult>)) : Either<Failure, SuccessResult> {
+        fun <SuccessResult> runWithCatchError(
+            errorInterceptors: List<ExceptionInterceptor> = listOf(),
+            action: () -> (Either<Failure, SuccessResult>)
+        ): Either<Failure, SuccessResult> {
             return try {
                 action()
             } catch (e: Exception) {

@@ -5,10 +5,13 @@
         app:startDestination="@id/detailFragment">
 
     <!-- Detail Fragment -->
-    <fragment android:id="@+id/detailFragment"
+    <fragment
+            android:id="@+id/detailFragment"
             android:name="com.template.detail.DetailFragment"
             android:label="User's detail">
-        <argument android:name="login" android:defaultValue="@null" />
+        <argument
+                android:name="login"
+                android:defaultValue="@null" />
     </fragment>
 
 </navigation>

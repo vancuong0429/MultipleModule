@@ -8,5 +8,12 @@ import com.template.local.di.localModule
 import com.template.remote.di.createRemoteModule
 import com.template.repository.di.createRepositoryModule
 
-val appComponent= listOf(createRemoteModule("https://api.github.com/"), createCommonModule, createDomainModule, createRepositoryModule,
-    createHomeModule, createDetailModule, localModule)
+val appComponent = listOf(
+    createRemoteModule("https://api.github.com/"),
+    createCommonModule,
+    createDomainModule,
+    createRepositoryModule,
+    createHomeModule,
+    createDetailModule,
+    localModule
+)

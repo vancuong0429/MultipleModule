@@ -11,7 +11,7 @@ import org.koin.test.KoinTest
 import org.koin.test.inject
 import java.io.File
 
-abstract class BaseTest : KoinTest{
+abstract class BaseTest : KoinTest {
     protected lateinit var mockServer: MockWebServer
     protected val userDataSource: UserDataSource by inject()
     @Before
@@ -31,11 +31,12 @@ abstract class BaseTest : KoinTest{
         mockServer.start()
     }
 
-    fun mockHttpResponse(mockWebServer: MockWebServer, fileName: String, responseCode: Int) = mockWebServer.enqueue(
-        MockResponse()
-            .setResponseCode(responseCode)
-            .setBody(getJson(fileName))
-    )
+    fun mockHttpResponse(mockWebServer: MockWebServer, fileName: String, responseCode: Int) =
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(responseCode)
+                .setBody(getJson(fileName))
+        )
 
     fun getJson(path: String): String {
         val uri = javaClass.classLoader?.getResource(path)

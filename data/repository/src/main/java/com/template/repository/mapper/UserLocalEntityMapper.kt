@@ -5,7 +5,7 @@ import com.template.common_jvm.mapper.Mapper
 import com.template.domain.entities.UserEntity
 import com.template.local.entities.UserDBO
 
-class UserLocalEntityMapper : Mapper<UserDBO, UserEntity>(){
+class UserLocalEntityMapper : Mapper<UserDBO, UserEntity>() {
     override fun map(input: UserDBO): UserEntity = UserEntity(
         id = input.id,
         login = input.login,

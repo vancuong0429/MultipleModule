@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
 import com.template.navigation.NavigationCommand
 
-abstract class BaseViewModel: ViewModel() {
+abstract class BaseViewModel : ViewModel() {
 
-//    // FOR ERROR HANDLER
+    //    // FOR ERROR HANDLER
 //    protected val _snackbarError = MutableLiveData<Event<Int>>()
 //    val snackBarError: LiveData<Event<Int>> get() = _snackbarError
 //

@@ -15,7 +15,7 @@ class HomeFragment : BaseFragment() {
     private lateinit var homeBinding: FragmentHomeBinding
 
     override fun getViewModel(): BaseViewModel {
-        return  mViewModel
+        return mViewModel
     }
 
     override fun onCreateView(

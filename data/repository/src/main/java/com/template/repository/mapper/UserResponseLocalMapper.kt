@@ -6,7 +6,7 @@ import com.template.local.entities.UserDBO
 import com.template.remote.entities.UserResponse
 import java.util.*
 
-class UserResponseLocalMapper : Mapper<UserResponse, UserDBO>(){
+class UserResponseLocalMapper : Mapper<UserResponse, UserDBO>() {
     override fun map(input: UserResponse): UserDBO = UserDBO(
         id = input.id.defaultEmpty(),
         login = input.login.defaultEmpty(),

@@ -5,7 +5,7 @@ import com.template.multiplemodule.di.appComponent
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-open class App: Application() {
+open class App : Application() {
     override fun onCreate() {
         super.onCreate()
         configureDi()
@@ -16,7 +16,8 @@ open class App: Application() {
 
     // CONFIGURATION ---
     open fun configureDi() =
-        startKoin { androidContext(this@App )
+        startKoin {
+            androidContext(this@App)
             modules(provideComponent())
         }
 

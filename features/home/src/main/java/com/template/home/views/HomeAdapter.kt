@@ -10,20 +10,21 @@ import com.template.home.HomeViewModel
 import com.template.home.R
 import com.template.home.databinding.ItemHomeBinding
 
-class HomeAdapter(private val viewModel: HomeViewModel): RecyclerView.Adapter<HomeViewHolder>(){
+class HomeAdapter(private val viewModel: HomeViewModel) : RecyclerView.Adapter<HomeViewHolder>() {
     private val users: MutableList<UserEntity> = mutableListOf()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder
-            = HomeViewHolder(
-        LayoutInflater.from(parent.context).inflate(
-            R.layout.item_home,
-            parent,
-            false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder =
+        HomeViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_home,
+                parent,
+                false
+            )
         )
-    )
 
     override fun getItemCount(): Int = users.size
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) = holder.bindTo(users[position], viewModel)
+    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) =
+        holder.bindTo(users[position], viewModel)
 
     fun updateData(items: List<UserEntity>) {
         val diffCallback = HomeItemDiffCallback(users, items)
@@ -36,7 +37,7 @@ class HomeAdapter(private val viewModel: HomeViewModel): RecyclerView.Adapter<Ho
 
 }
 
-class HomeViewHolder(parent: View): RecyclerView.ViewHolder(parent) {
+class HomeViewHolder(parent: View) : RecyclerView.ViewHolder(parent) {
 
     private val binding = ItemHomeBinding.bind(parent)
 

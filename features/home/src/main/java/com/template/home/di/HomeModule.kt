@@ -7,6 +7,6 @@ import org.koin.dsl.module
 
 val createHomeModule = module {
 
-    viewModel{ HomeViewModel(getTopUsersUseCase = get(), appDispatchers = get()) }
+    viewModel { HomeViewModel(getTopUsersUseCase = get(), appDispatchers = get()) }
 
 }

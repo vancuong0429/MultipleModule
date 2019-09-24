@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-abstract class UseCase<Params: UseCaseParams, Result>(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+abstract class UseCase<Params : UseCaseParams, Result>(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
 
     suspend fun execute(params: Params): Either<Failure, Result> {
         return withContext(dispatcher) {
