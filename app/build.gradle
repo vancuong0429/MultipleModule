@@ -42,3 +42,11 @@ dependencies {
     implementation globalConf.libraries.koinViewModel
 
 }
+
+//copyChildNavigationGraphsFixed Navigation 5: Deep link with navigation module
+
+task copyChildNavigationGraphs(type: Copy) {
+    from '../navigation/src/main/res/navigation'
+    into 'src/main/res/navigation'
+}
+preBuild.dependsOn copyChildNavigationGraphs
